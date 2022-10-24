@@ -17,12 +17,12 @@ const app= http.createServer(async (req, res) =>{
         const jsonPath = path.resolve('./data.json');
         const jsonf = await fs.readFile(jsonPath, 'utf8');
         const arr = JSON.parse(jsonf);
-        if (requestURL === "/apiv1/tasks/" && requestMethod === "GET"){
+        if (requestURL === "/apiv1/tasks" && requestMethod === "GET"){
             res.writeHead(200, {"Content-Type": "aplication/json"}); //el 200 es que todo salio ok
-            //res.write(JSON.stringify(arr));
-            res.end(JSON.stringify(arr));       
+            res.write(jsonf);
+                 
          }
-     if (requestURL === "/apiv1/tasks/"  && requestMethod === "POST"){
+     if (requestURL === "/apiv1/tasks"  && requestMethod === "POST"){
         
             req.on("data", async (data) => {              
                 arry = arr.sort((a,b) =>
